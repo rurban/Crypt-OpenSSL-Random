@@ -18,7 +18,7 @@ use AutoLoader;
 @EXPORT_OK = qw( random_bytes random_pseudo_bytes random_seed
                  random_egd random_status );
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 bootstrap Crypt::OpenSSL::Random $VERSION;
 
@@ -28,7 +28,6 @@ bootstrap Crypt::OpenSSL::Random $VERSION;
 
 1;
 __END__
-# Below is stub documentation for your module. You better edit it!
 
 =head1 NAME
 
@@ -41,7 +40,13 @@ pseudo-random number generator
 
   use Crypt::OpenSSL::Random;
 
-  
+  Crypt::OpenSSL::Random::random_seed($good_random_data);
+  Crypt::OpenSSL::Random::random_egd("/tmp/entropy");
+  Crypt::OpenSSL::Random::random_status() or
+    die "Unable to sufficiently seed the random number generator".
+
+  my $ten_good_random_bytes = Crypt::OpenSSL::Random::random_bytes(10);
+  my $ten_ok_random_bytes = Crypt::OpenSSL::Random::random_pseudo_bytes(10);
 
 =head1 DESCRIPTION
 
@@ -85,6 +90,15 @@ the daemon failed.
 
 This function returns true if the PRNG has sufficient seeding.
 
+=head1 BUGS
+
+Because of the internal workings of OpenSSL's random library, the
+pseudo-random number generator (PRNG) accessed by
+Crypt::OpenSSL::Random will be different than the one accessed by any
+other perl module.  Hence, to use a module such as
+Crypt::OpenSSL::Random, you will need to seed the PRNG used there from
+one used here.  This class is still advantageous, however, as it
+centralizes other methods, such as random_egd, in one place.
 
 =head1 AUTHOR
 
