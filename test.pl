@@ -6,7 +6,7 @@
 # Change 1..1 below to 1..last_test_to_print .
 # (It may become useful if the test is moved to ./t subdirectory.)
 
-BEGIN { $| = 1; print "1..1\n"; }
+BEGIN { $| = 1; print "1..5\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use Crypt::OpenSSL::Random;
 $loaded = 1;
@@ -32,12 +32,13 @@ sub my_test
         my ($pack, $file, $line) = caller;
         print "not ok $number - from $file:$line\n";
     }
-}    
+}
 
-Crypt::OpenSSL::Random::random_seed("Here are 19 bytes...");
+my_test(Crypt::OpenSSL::Random::random_seed
+        ("OpenSSL needs at least 32 bytes."));
 
 # We should now be seeded, regardless.
 my_test(Crypt::OpenSSL::Random::random_status());
 
-my_test(length(Crypt::OpenSSL::Random::random_bytes(53)), 53);
-my_test(length(Crypt::OpenSSL::Random::random_pseudo_bytes(53)), 53);
+my_test(length(Crypt::OpenSSL::Random::random_bytes(53)) == 53);
+my_test(length(Crypt::OpenSSL::Random::random_pseudo_bytes(53)) == 53);
