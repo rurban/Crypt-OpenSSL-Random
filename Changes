@@ -1,6 +1,10 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
-0.03  Thu Sep 06 23:05:36
+0.04  Sun May 20 13:41:04 2007
+        - Add a LICENSE file.
+        - Better use of types.
+
+0.03  Thu Sep 06 23:05:36 2001
         - Added documentation
 
 0.02  Mon Apr  9 18:55:30 2001
@@ -9,4 +13,3 @@ Revision history for Perl extension Crypt::OpenSSL::Random.
 0.01  Sun Apr  8 15:25:10 2001
 	- original version; created by h2xs 1.20 with options
 		-n Crypt::OpenSSL::Random
-

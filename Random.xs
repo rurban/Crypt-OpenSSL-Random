@@ -4,9 +4,9 @@
 
 #include <openssl/rand.h>
 
-#define PACKAGE_NAME "Crypt::OpenSSL::RSA"    
+#define PACKAGE_NAME "Crypt::OpenSSL::RSA"
 
-MODULE = Crypt::OpenSSL::Random		PACKAGE = Crypt::OpenSSL::Random		
+MODULE = Crypt::OpenSSL::Random		PACKAGE = Crypt::OpenSSL::Random
 void
 random_bytes(num_bytes_SV)
     SV * num_bytes_SV;
@@ -57,7 +57,7 @@ PPCODE:
     }
 }
 
- # Seed the PRNG with user-provided bytes; returns true if the 
+ # Seed the PRNG with user-provided bytes; returns true if the
  # seeding was sufficient.
 
 void
@@ -65,7 +65,7 @@ random_seed(random_bytes_SV)
     SV * random_bytes_SV;
 PPCODE:
 {
-    int random_bytes_length;
+    Size_t random_bytes_length;
     char *random_bytes;
     random_bytes = SvPV(random_bytes_SV, random_bytes_length);
     RAND_seed(random_bytes, random_bytes_length);
@@ -81,10 +81,9 @@ random_egd(egd_SV)
     SV * egd_SV;
 PPCODE:
 {
-    int random_bytes_length;
-    char *random_bytes;
+    Size_t egd_length;
     int status;
-    char *egd = SvPV(egd_SV, random_bytes_length);
+    char *egd = SvPV(egd_SV, egd_length);
     status = RAND_egd(egd);
     XPUSHs( sv_2mortal( newSViv( status ) ) );
 }
@@ -97,4 +96,3 @@ PPCODE:
 {
     XPUSHs( sv_2mortal( newSViv( RAND_status() ) ) );
 }
-
