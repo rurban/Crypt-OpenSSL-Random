@@ -25,4 +25,47 @@ WriteMakefile(
   'PREREQ_PM'	    => {},
   'LIBS'            => $libdir ? [ "-L$libdir -lssl -lcrypto" ] : [ "-lssl -lcrypto" ],
   'INC'             => $incdir ? "-I$incdir" : "",
+   ($ExtUtils::MakeMaker::VERSION gt '6.46' ?
+    ('LICENSE'     => 'perl',
+     'META_MERGE'  =>
+     {
+      resources =>
+      {
+       repository  => 'https://github.com/rurban/Crypt-OpenSSL-Random',
+       license     => 'http://dev.perl.org/licenses/',
+      },
+     }
+    ) : ()),
+    SIGN => 1
 );
+
+package MY;
+use Config;
+
+sub depend {
+  "
+README : \$(VERSION_FROM)
+	pod2text \$(VERSION_FROM) > README
+
+release : dist
+	git commit -a -m\"release \$(VERSION)\"
+	git tag \$(VERSION)
+	cpan-upload \$(DISTVNAME).tar\$(SUFFIX)
+	git push
+	git push --tags
+
+gcov : \$(BASEEXT).c.gcov \$(BASEEXT).gcov cover_db/\$(BASEEXT)-xs.html
+
+\$(BASEEXT).c.gcov \$(BASEEXT).xs.gcov : \$(BASEEXT).xs
+	\$(MAKE) CCFLAGS=\"\$(CCFLAGS) -fprofile-arcs -ftest-coverage\" LDDLFLAGS=\"\$(LDDLFLAGS) -fprofile-arcs -ftest-coverage\"
+	gcov \$(BASEEXT).c \$(BASEEXT).xs
+
+cover_db/\$(BASEEXT)-xs.html : \$(BASEEXT).xs.gcov
+	PERL5OPT=-MDevel::Cover make test
+	-$^X -S gcov2perl \$(BASEEXT).c.gcov \$(BASEEXT).xs.gcov
+	$^X -S cover
+
+gprof :
+	\$(MAKE) CCFLAGS=\"\$(CCFLAGS) -pg\" LDDLFLAGS=\"\$(LDDLFLAGS) -pg\"
+"
+}

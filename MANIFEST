@@ -4,5 +4,6 @@ MANIFEST
 Makefile.PL
 Random.pm
 Random.xs
+README
 test.pl
-META.yml                                 Module meta-data (added by MakeMaker)
+inc/Devel/CheckLib.pm

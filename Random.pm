@@ -18,7 +18,7 @@ use AutoLoader;
 @EXPORT_OK = qw( random_bytes random_pseudo_bytes random_seed
                  random_egd random_status );
 
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 bootstrap Crypt::OpenSSL::Random $VERSION;
 
@@ -51,7 +51,7 @@ pseudo-random number generator
 =head1 DESCRIPTION
 
 Crypt::OpenSSL::Random provides the ability to seed and query the
-OpenSSL library's pseudo-random number generator
+OpenSSL library's pseudo-random number generator.
 
 =head2 EXPORT
 
@@ -59,36 +59,40 @@ None by default.
 
 =head1 Static Methods
 
-=item random_bytes
+=over
+
+=item random_bytes (IV num_bytes)
 
 This function, returns a specified number of cryptographically strong
 pseudo-random bytes from the PRNG.  If the PRNG has not been seeded
 with enough randomness to ensure an unpredictable byte sequence, then
 a false value is returned.
 
-=item random_pseudo_bytes
+=item random_pseudo_bytes (IV num_bytes)
 
 This function, is similar to c<random_bytes>, but the resulting
 sequence of bytes are not necessarily unpredictable.  They can be used
 for non-cryptographic purposes and for certain purposes in
 cryptographic protocols, but usually not for key generation etc.
 
-=item random_seed
+=item random_seed (PV random_bytes_string)
 
 This function seeds the PRNG with a supplied string of bytes.  It
 returns true if the PRNG has sufficient seeding.  Note: calling this
 function with non-random bytes is of limited value at best!
 
-=item random_egd
+=item random_egd (PV egd_string)
 
 This function seeds the PRNG with data from the specified entropy
 gathering daemon.  Returns the number of bytes read from the daemon on
 succes, or -1 if not enough bytes were read, or if the connection to
 the daemon failed.
 
-=item random_status
+=item random_status ()
 
 This function returns true if the PRNG has sufficient seeding.
+
+=back
 
 =head1 BUGS
 
