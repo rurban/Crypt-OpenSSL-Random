@@ -42,6 +42,12 @@ WriteMakefile(
 package MY;
 use Config;
 
+sub top_targets {
+  local $_ = shift->SUPER::top_targets(@_);
+  s/\$\(FIRST_MAKEFILE\) blibdirs/\$(FIRST_MAKEFILE\) blibdirs README/;
+  $_
+}
+
 sub depend {
   "
 README : \$(VERSION_FROM)
