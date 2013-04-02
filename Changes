@@ -1,12 +1,13 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
-0.05  2013-04-02 14:15:10 rurban
+0.05  2013-04-02 14:31:30 rurban
 	- Add inc/Devel/CheckLib, improve POD, add README and some helper targets
 	- Better diagnostics when the openssl libraries are not found
 	- Support INCDIR= and LIBDIR= arguments to Makefile.PL
 	- Add MSWin32 hints to find the openssl libraries
         - Autocreate README
 	- Fix some -Wpointer-sign warnings
+	- Remove wrong Crypt::OpenSSL::RSA package names in docs and errmsg
 
 0.04  Sun May 20 13:41:04 2007
         - Add a LICENSE file.

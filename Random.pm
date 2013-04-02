@@ -31,10 +31,8 @@ __END__
 
 =head1 NAME
 
-Crypt::OpenSSL::RSA - RSA encoding and decoding, using the openSSL libraries
-
-Crypt::OpenSSL::Random - Routines for accessing the OpenSSL
-pseudo-random number generator
+Crypt::OpenSSL::Random - Routines for accessing the OpenSSL pseudo-random number generator
+using the openSSL libraries
 
 =head1 SYNOPSIS
 

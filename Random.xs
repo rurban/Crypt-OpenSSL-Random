@@ -4,7 +4,7 @@
 
 #include <openssl/rand.h>
 
-#define PACKAGE_NAME "Crypt::OpenSSL::RSA"
+#define PACKAGE_NAME "Crypt::OpenSSL::Random"
 
 MODULE = Crypt::OpenSSL::Random		PACKAGE = Crypt::OpenSSL::Random
 void
