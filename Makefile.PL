@@ -31,8 +31,10 @@ WriteMakefile(
      {
       resources =>
       {
-       repository  => 'https://github.com/rurban/Crypt-OpenSSL-Random',
+       homepage    => 'http://sourceforge.net/projects/perl-openssl/',
+       repository  => 'http://perl-openssl.cvs.sourceforge.net/viewvc/perl-openssl/Crypt/OpenSSL/Random/',
        license     => 'http://dev.perl.org/licenses/',
+       MailingList => 'perl-openssl-users@lists.sourceforge.net',
       },
      }
     ) : ()),
