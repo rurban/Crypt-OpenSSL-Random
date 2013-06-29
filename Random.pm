@@ -83,7 +83,7 @@ function with non-random bytes is of limited value at best!
 
 This function seeds the PRNG with data from the specified entropy
 gathering daemon.  Returns the number of bytes read from the daemon on
-succes, or -1 if not enough bytes were read, or if the connection to
+success, or -1 if not enough bytes were read, or if the connection to
 the daemon failed.
 
 =item random_status ()
