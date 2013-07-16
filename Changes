@@ -1,5 +1,8 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
+0.06  rurban
+	- Typo in doc (dsteinbrunner)
+
 0.05  2013-04-02 14:31:30 rurban
 	- Add inc/Devel/CheckLib, improve POD, add README and some helper targets
 	- Better diagnostics when the openssl libraries are not found

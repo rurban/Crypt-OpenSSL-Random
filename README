@@ -1,9 +1,6 @@
 NAME
-    Crypt::OpenSSL::RSA - RSA encoding and decoding, using the openSSL
-    libraries
-
     Crypt::OpenSSL::Random - Routines for accessing the OpenSSL
-    pseudo-random number generator
+    pseudo-random number generator using the openSSL libraries
 
 SYNOPSIS
       use Crypt::OpenSSL::Random;
@@ -44,8 +41,8 @@ Static Methods
     random_egd (PV egd_string)
         This function seeds the PRNG with data from the specified entropy
         gathering daemon. Returns the number of bytes read from the daemon
-        on succes, or -1 if not enough bytes were read, or if the connection
-        to the daemon failed.
+        on success, or -1 if not enough bytes were read, or if the
+        connection to the daemon failed.
 
     random_status ()
         This function returns true if the PRNG has sufficient seeding.
