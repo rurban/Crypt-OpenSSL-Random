@@ -54,10 +54,12 @@ BUGS
     to use a module such as Crypt::OpenSSL::Random, you will need to seed
     the PRNG used there from one used here. This class is still
     advantageous, however, as it centralizes other methods, such as
-    random_egd, in one place.
+    "random_egd", in one place.
 
 AUTHOR
-    Ian Robertson, iroberts@cpan.com
+    Ian Robertson, "iroberts@cpan.com"
+
+    Now maintained by Reini Urban, "rurban@cpan.org"
 
 SEE ALSO
     perl(1), rand(3), RAND_add(3), RAND_egd(3), RAND_bytes(3).

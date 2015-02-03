@@ -18,7 +18,7 @@ use AutoLoader;
 @EXPORT_OK = qw( random_bytes random_pseudo_bytes random_seed
                  random_egd random_status );
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 bootstrap Crypt::OpenSSL::Random $VERSION;
 
@@ -83,7 +83,7 @@ function with non-random bytes is of limited value at best!
 
 This function seeds the PRNG with data from the specified entropy
 gathering daemon.  Returns the number of bytes read from the daemon on
-success, or -1 if not enough bytes were read, or if the connection to
+success, or C<-1> if not enough bytes were read, or if the connection to
 the daemon failed.
 
 =item random_status ()
@@ -100,11 +100,13 @@ Crypt::OpenSSL::Random will be different than the one accessed by any
 other perl module.  Hence, to use a module such as
 Crypt::OpenSSL::Random, you will need to seed the PRNG used there from
 one used here.  This class is still advantageous, however, as it
-centralizes other methods, such as random_egd, in one place.
+centralizes other methods, such as C<random_egd>, in one place.
 
 =head1 AUTHOR
 
-Ian Robertson, iroberts@cpan.com
+Ian Robertson, C<iroberts@cpan.com>
+
+Now maintained by Reini Urban, C<rurban@cpan.org>
 
 =head1 SEE ALSO
 

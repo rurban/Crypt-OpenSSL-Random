@@ -25,6 +25,7 @@ WriteMakefile(
   'PREREQ_PM'	    => {},
   'LIBS'            => $libdir ? [ "-L$libdir -lssl -lcrypto" ] : [ "-lssl -lcrypto" ],
   'INC'             => $incdir ? "-I$incdir" : "",
+  'AUTHOR'          => 'Ian Robertson',
    ($ExtUtils::MakeMaker::VERSION gt '6.46' ?
     ('LICENSE'     => 'perl',
      'META_MERGE'  =>
@@ -32,7 +33,8 @@ WriteMakefile(
       resources =>
       {
        homepage    => 'http://sourceforge.net/projects/perl-openssl/',
-       repository  => 'http://perl-openssl.cvs.sourceforge.net/viewvc/perl-openssl/Crypt/OpenSSL/Random/',
+       repository  => 'https://github.com/rurban/Crypt-OpenSSL-Random',
+       #repository  => 'http://perl-openssl.cvs.sourceforge.net/viewvc/perl-openssl/Crypt/OpenSSL/Random/',
        license     => 'http://dev.perl.org/licenses/',
        MailingList => 'perl-openssl-users@lists.sourceforge.net',
       },
