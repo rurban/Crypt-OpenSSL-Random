@@ -1,7 +1,6 @@
 use ExtUtils::MakeMaker;
+use Config;
 
-use lib qw(inc);
-use Devel::CheckLib;
 my ($libdir, $incdir);
 my $args = join(" ", @ARGV);
 if ($args =~ /INCDIR[ =](\S+)/) {
@@ -10,20 +9,13 @@ if ($args =~ /INCDIR[ =](\S+)/) {
 if ($args =~ /LIBDIR[ =](\S+)/) {
   $libdir = $1;
 }
-if ($libdir or $incdir) {
-  eval qq{assert_lib( lib => 'ssl', header => 'openssl/rand.h', libpath => $libdir, incpath => $incdir )};
-} else {
-  eval q{assert_lib( lib => 'ssl', header => 'openssl/rand.h' )};
-}
-if ($@) {
-  warn "-lssl -lcrypto not found. Need to install the openssl devel packages.\n";
-}
+
+my @libs = qw(-lssl -lcrypto);
 
 WriteMakefile(
   'NAME'	    => 'Crypt::OpenSSL::Random',
   'VERSION_FROM'    => 'Random.pm',
-  'PREREQ_PM'	    => {},
-  'LIBS'            => $libdir ? [ "-L$libdir -lssl -lcrypto" ] : [ "-lssl -lcrypto" ],
+  'LIBS'            => $libdir ? [ "-L$libdir", @libs ] : \@libs,
   'INC'             => $incdir ? "-I$incdir" : "",
   'AUTHOR'          => 'Ian Robertson',
    ($ExtUtils::MakeMaker::VERSION gt '6.46' ?

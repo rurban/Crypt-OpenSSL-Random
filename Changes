@@ -1,5 +1,9 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
+0.08  2015-02-03 rurban
+        - remove Devel::CheckLib which does not work for 2 required libs
+        - replace DynaLoader by XSLoader
+
 0.07  2015-02-03 rurban
 	- Bump version to publish an official release
 

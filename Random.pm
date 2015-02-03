@@ -1,30 +1,16 @@
 package Crypt::OpenSSL::Random;
 
 use strict;
-use Carp;
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK $AUTOLOAD);
-
+use XSLoader;
 require Exporter;
-require DynaLoader;
-use AutoLoader;
-
-@ISA = qw(Exporter DynaLoader);
-
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
+@ISA = qw(Exporter);
 @EXPORT_OK = qw( random_bytes random_pseudo_bytes random_seed
                  random_egd random_status );
 
-$VERSION = '0.07';
-
-bootstrap Crypt::OpenSSL::Random $VERSION;
-
-# Preloaded methods go here.
-
-# Autoload methods go after =cut, and are processed by the autosplit program.
+$VERSION = '0.08';
+XSLoader::load( __PACKAGE__, $VERSION );
 
 1;
 __END__
