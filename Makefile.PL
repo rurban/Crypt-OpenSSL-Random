@@ -56,7 +56,7 @@ release : dist
 	git push
 	git push --tags
 
-gcov : \$(BASEEXT).c.gcov \$(BASEEXT).gcov cover_db/\$(BASEEXT)-xs.html
+gcov : \$(BASEEXT).c.gcov \$(BASEEXT).xs.gcov cover_db/\$(BASEEXT)-xs.html
 
 \$(BASEEXT).c.gcov \$(BASEEXT).xs.gcov : \$(BASEEXT).xs
 	\$(MAKE) CCFLAGS=\"\$(CCFLAGS) -fprofile-arcs -ftest-coverage\" LDDLFLAGS=\"\$(LDDLFLAGS) -fprofile-arcs -ftest-coverage\"
