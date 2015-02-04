@@ -1,5 +1,6 @@
 use ExtUtils::MakeMaker;
 use Config;
+use 5.006;
 
 my ($libdir, $incdir);
 my $args = join(" ", @ARGV);

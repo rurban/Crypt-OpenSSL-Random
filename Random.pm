@@ -9,7 +9,7 @@ require Exporter;
 @EXPORT_OK = qw( random_bytes random_pseudo_bytes random_seed
                  random_egd random_status );
 
-$VERSION = '0.08';
+$VERSION = '0.09';
 XSLoader::load( __PACKAGE__, $VERSION );
 
 1;
@@ -93,6 +93,11 @@ centralizes other methods, such as C<random_egd>, in one place.
 Ian Robertson, C<iroberts@cpan.com>
 
 Now maintained by Reini Urban, C<rurban@cpan.org>
+
+=head1 LICENSE
+
+This module is available under the same licences as perl, the Artistic
+license and the GPL.
 
 =head1 SEE ALSO
 

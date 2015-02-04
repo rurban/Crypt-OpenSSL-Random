@@ -61,6 +61,10 @@ AUTHOR
 
     Now maintained by Reini Urban, "rurban@cpan.org"
 
+LICENSE
+    This module is available under the same licences as perl, the Artistic
+    license and the GPL.
+
 SEE ALSO
     perl(1), rand(3), RAND_add(3), RAND_egd(3), RAND_bytes(3).
 

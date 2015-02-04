@@ -1,5 +1,10 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
+0.09  2015-02-04 rurban
+        - add missing hints/MSWin32.pl (kmx, RT #56455)
+        - add a couple of distro tests
+        - fix gcov target
+
 0.08  2015-02-03 rurban
         - remove Devel::CheckLib which does not work for 2 required libs
         - replace DynaLoader by XSLoader
