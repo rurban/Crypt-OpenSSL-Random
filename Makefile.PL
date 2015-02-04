@@ -10,13 +10,12 @@ if ($args =~ /INCDIR[ =](\S+)/) {
 if ($args =~ /LIBDIR[ =](\S+)/) {
   $libdir = $1;
 }
-
-my @libs = qw(-lssl -lcrypto);
+my $libs = "-lssl -lcrypto";
 
 WriteMakefile(
   'NAME'	    => 'Crypt::OpenSSL::Random',
   'VERSION_FROM'    => 'Random.pm',
-  'LIBS'            => $libdir ? [ "-L$libdir", @libs ] : \@libs,
+  'LIBS'            => $libdir ? [ "-L$libdir $libs" ] : [ $libs ],
   'INC'             => $incdir ? "-I$incdir" : "",
   'AUTHOR'          => 'Ian Robertson',
    ($ExtUtils::MakeMaker::VERSION gt '6.46' ?

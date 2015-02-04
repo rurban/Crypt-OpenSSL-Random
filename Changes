@@ -1,5 +1,8 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
+0.10  2015-02-04 rurban
+        - fix LIBS argument, fatal on Windows. thanks to kmx
+
 0.09  2015-02-04 rurban
         - add missing hints/MSWin32.pl (kmx, RT #56455)
         - add a couple of distro tests
