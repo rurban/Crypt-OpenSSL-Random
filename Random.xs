@@ -7,6 +7,8 @@
 #define PACKAGE_NAME "Crypt::OpenSSL::Random"
 
 MODULE = Crypt::OpenSSL::Random		PACKAGE = Crypt::OpenSSL::Random
+PROTOTYPES: DISABLE
+
 void
 random_bytes(num_bytes_SV)
     SV * num_bytes_SV;
