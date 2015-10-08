@@ -78,6 +78,8 @@ PPCODE:
  # returns the number of bytes gathered, or -1 if there was a
  # connection failure or if the PRNG is still insufficiently seeded.
 
+#ifndef OPENSSL_NO_EGD
+
 void
 random_egd(egd_SV)
     SV * egd_SV;
@@ -89,6 +91,8 @@ PPCODE:
     status = RAND_egd(egd);
     XPUSHs( sv_2mortal( newSViv( status ) ) );
 }
+
+#endif
 
  # Returns true if the PRNG has enough seed data
 

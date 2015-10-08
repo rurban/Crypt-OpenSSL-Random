@@ -1,6 +1,6 @@
 NAME
-    Crypt::OpenSSL::Random - Routines for accessing the OpenSSL
-    pseudo-random number generator using the openSSL libraries
+    Crypt::OpenSSL::Random - OpenSSL/LibreSSL pseudo-random number generator
+    access
 
 SYNOPSIS
       use Crypt::OpenSSL::Random;
@@ -14,8 +14,10 @@ SYNOPSIS
       my $ten_ok_random_bytes = Crypt::OpenSSL::Random::random_pseudo_bytes(10);
 
 DESCRIPTION
-    Crypt::OpenSSL::Random provides the ability to seed and query the
-    OpenSSL library's pseudo-random number generator.
+    "Crypt::OpenSSL::Random" provides the ability to seed and query the
+    OpenSSL and LibreSSL library's pseudo-random number generators.
+
+    Note: On LibreSSL "random_egd()" is not defined.
 
   EXPORT
     None by default.
@@ -43,6 +45,9 @@ Static Methods
         gathering daemon. Returns the number of bytes read from the daemon
         on success, or -1 if not enough bytes were read, or if the
         connection to the daemon failed.
+
+        "libressl" considers this function insecure, so with libressl this
+        function does not exist.
 
     random_status ()
         This function returns true if the PRNG has sufficient seeding.

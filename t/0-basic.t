@@ -8,7 +8,7 @@
 
 BEGIN { $| = 1; print "1..5\n"; }
 END {print "not ok 1\n" unless $loaded;}
-use Crypt::OpenSSL::Random;
+use Crypt::OpenSSL::Random qw(random_seed random_bytes random_status random_pseudo_bytes);
 $loaded = 1;
 print "ok 1\n";
 
@@ -34,11 +34,11 @@ sub my_test
     }
 }
 
-my_test(Crypt::OpenSSL::Random::random_seed
+my_test(random_seed
         ("OpenSSL needs at least 32 bytes."));
 
 # We should now be seeded, regardless.
-my_test(Crypt::OpenSSL::Random::random_status());
+my_test(random_status());
 
-my_test(length(Crypt::OpenSSL::Random::random_bytes(53)) == 53);
-my_test(length(Crypt::OpenSSL::Random::random_pseudo_bytes(53)) == 53);
+my_test(length(random_bytes(53)) == 53);
+my_test(length(random_pseudo_bytes(53)) == 53);

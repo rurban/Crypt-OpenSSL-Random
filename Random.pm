@@ -9,7 +9,7 @@ require Exporter;
 @EXPORT_OK = qw( random_bytes random_pseudo_bytes random_seed
                  random_egd random_status );
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 XSLoader::load( __PACKAGE__, $VERSION );
 
 1;
@@ -17,8 +17,7 @@ __END__
 
 =head1 NAME
 
-Crypt::OpenSSL::Random - Routines for accessing the OpenSSL pseudo-random number generator
-using the openSSL libraries
+Crypt::OpenSSL::Random - OpenSSL/LibreSSL pseudo-random number generator access
 
 =head1 SYNOPSIS
 
@@ -34,8 +33,10 @@ using the openSSL libraries
 
 =head1 DESCRIPTION
 
-Crypt::OpenSSL::Random provides the ability to seed and query the
-OpenSSL library's pseudo-random number generator.
+C<Crypt::OpenSSL::Random> provides the ability to seed and query the
+B<OpenSSL> and B<LibreSSL> library's pseudo-random number generators.
+
+Note: On B<LibreSSL> C<random_egd()> is not defined.
 
 =head2 EXPORT
 
@@ -71,6 +72,9 @@ This function seeds the PRNG with data from the specified entropy
 gathering daemon.  Returns the number of bytes read from the daemon on
 success, or C<-1> if not enough bytes were read, or if the connection to
 the daemon failed.
+
+C<libressl> considers this function insecure, so with libressl this
+function does not exist.
 
 =item random_status ()
 

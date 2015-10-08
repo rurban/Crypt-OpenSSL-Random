@@ -1,5 +1,8 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
+0.11  2015-10-09 rurban
+        - add libressl support, unsupported random_egd() with libressl 
+
 0.10  2015-02-04 rurban
         - fix LIBS argument, fatal on Windows. thanks to kmx
 
