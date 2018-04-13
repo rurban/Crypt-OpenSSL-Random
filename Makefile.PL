@@ -1,5 +1,6 @@
 use ExtUtils::MakeMaker;
 use Config;
+use Crypt::OpenSSL::Guess qw(openssl_inc_paths);
 use 5.006;
 
 my ($libdir, $incdir);
@@ -16,7 +17,7 @@ WriteMakefile(
   'NAME'	    => 'Crypt::OpenSSL::Random',
   'VERSION_FROM'    => 'Random.pm',
   'LIBS'            => $libdir ? [ "-L$libdir $libs" ] : [ $libs ],
-  'INC'             => $incdir ? "-I$incdir" : "",
+  'INC'             => $incdir ? "-I$incdir" : openssl_inc_paths(),
   'AUTHOR'          => 'Ian Robertson',
    ($ExtUtils::MakeMaker::VERSION gt '6.46' ?
     ('LICENSE'     => 'perl',
@@ -29,6 +30,9 @@ WriteMakefile(
        #repository  => 'http://perl-openssl.cvs.sourceforge.net/viewvc/perl-openssl/Crypt/OpenSSL/Random/',
        license     => 'http://dev.perl.org/licenses/',
        MailingList => 'perl-openssl-users@lists.sourceforge.net',
+      },
+      build_requires => {
+       'Crypt::OpenSSL::Guess' => 0,
       },
      }
     ) : ()),
