@@ -19,7 +19,13 @@ WriteMakefile(
   'LIBS'            => $libdir ? [ "-L$libdir $libs" ] : [ $libs ],
   'INC'             => $incdir ? "-I$incdir" : openssl_inc_paths(),
   'AUTHOR'          => 'Ian Robertson',
-   ($ExtUtils::MakeMaker::VERSION gt '6.46' ?
+   (eval { ExtUtils::MakeMaker->VERSION('6.52'); 1 } ?
+    ('CONFIGURE_REQUIRES' =>
+     {
+      'Crypt::OpenSSL::Guess' => 0,
+     },
+    ) : ()),
+   (eval { ExtUtils::MakeMaker->VERSION('6.46'); 1 } ?
     ('LICENSE'     => 'perl',
      'META_MERGE'  =>
      {
@@ -30,9 +36,6 @@ WriteMakefile(
        #repository  => 'http://perl-openssl.cvs.sourceforge.net/viewvc/perl-openssl/Crypt/OpenSSL/Random/',
        license     => 'http://dev.perl.org/licenses/',
        MailingList => 'perl-openssl-users@lists.sourceforge.net',
-      },
-      build_requires => {
-       'Crypt::OpenSSL::Guess' => 0,
       },
      }
     ) : ()),
