@@ -1,5 +1,9 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
+0.12  2018-04-13 rurban
+        - use Crypt::OpenSSL::Guess to resolve OpenSSL include path,
+          fixes MacOS's homebrew OpenSSL installation problem. (akiym, PR #3)
+
 0.11  2015-10-09 rurban
         - add libressl support, unsupported random_egd() with libressl 
 
