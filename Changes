@@ -1,5 +1,8 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
+0.13  2018-04-14 rurban
+        - move Crypt::OpenSSL::Guess to configure dependency. (grinnz, PR #4)
+
 0.12  2018-04-13 rurban
         - use Crypt::OpenSSL::Guess to resolve OpenSSL include path,
           fixes MacOS's homebrew OpenSSL installation problem. (akiym, PR #3)
