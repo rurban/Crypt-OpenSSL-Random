@@ -1,6 +1,6 @@
 use ExtUtils::MakeMaker;
 use Config;
-use Crypt::OpenSSL::Guess qw(openssl_inc_paths);
+use Crypt::OpenSSL::Guess qw(openssl_inc_paths openssl_lib_paths);
 use 5.006;
 
 my ($libdir, $incdir);
@@ -16,13 +16,13 @@ my $libs = "-lssl -lcrypto";
 WriteMakefile(
   'NAME'	    => 'Crypt::OpenSSL::Random',
   'VERSION_FROM'    => 'Random.pm',
-  'LIBS'            => $libdir ? [ "-L$libdir $libs" ] : [ $libs ],
+  'LIBS'            => $libdir ? [ "-L$libdir $libs" ] : [ openssl_lib_paths() . " $libs" ],
   'INC'             => $incdir ? "-I$incdir" : openssl_inc_paths(),
   'AUTHOR'          => 'Ian Robertson',
    (eval { ExtUtils::MakeMaker->VERSION('6.52'); 1 } ?
     ('CONFIGURE_REQUIRES' =>
      {
-      'Crypt::OpenSSL::Guess' => 0,
+      'Crypt::OpenSSL::Guess' => '0.10',
      },
     ) : ()),
    (eval { ExtUtils::MakeMaker->VERSION('6.46'); 1 } ?
