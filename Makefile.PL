@@ -22,7 +22,7 @@ WriteMakefile(
    (eval { ExtUtils::MakeMaker->VERSION('6.52'); 1 } ?
     ('CONFIGURE_REQUIRES' =>
      {
-      'Crypt::OpenSSL::Guess' => '0.10',
+      'Crypt::OpenSSL::Guess' => '0.11',
      },
     ) : ()),
    (eval { ExtUtils::MakeMaker->VERSION('6.46'); 1 } ?
