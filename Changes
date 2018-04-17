@@ -1,5 +1,8 @@
 Revision history for Perl extension Crypt::OpenSSL::Random.
 
+0.14  2018-04-17 rurban
+        - add library paths to LIBS from Crypt::OpenSSL::Guess (akiym, PR #6)
+
 0.13  2018-04-14 rurban
         - move Crypt::OpenSSL::Guess to configure dependency. (grinnz, PR #4)
 
