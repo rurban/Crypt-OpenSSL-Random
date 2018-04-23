@@ -38,7 +38,7 @@ WriteMakefile(
       },
      }
     ) : ()),
-    SIGN => 1
+    ($ENV{AUTOMATED_TESTING} ? () : (SIGN => 1)),
 );
 
 package MY;
