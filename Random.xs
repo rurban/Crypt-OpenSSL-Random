@@ -22,7 +22,7 @@ PPCODE:
             PACKAGE_NAME);
     }
 
-    if(RAND_bytes(rand_bytes, num_bytes))
+    if(RAND_bytes(rand_bytes, num_bytes) == 1)
     {
       XPUSHs(sv_2mortal(newSVpv((const char*)rand_bytes, num_bytes)));
         Safefree(rand_bytes);
@@ -47,7 +47,7 @@ PPCODE:
             PACKAGE_NAME);
     }
 
-    if(RAND_bytes(rand_bytes, num_bytes))
+    if(RAND_bytes(rand_bytes, num_bytes) == 1)
     {
         XPUSHs(sv_2mortal(newSVpv((const char*)rand_bytes, num_bytes)));
         Safefree(rand_bytes);
