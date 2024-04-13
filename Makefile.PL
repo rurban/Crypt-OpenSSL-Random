@@ -19,6 +19,10 @@ WriteMakefile(
   'LIBS'            => $libdir ? [ "-L$libdir $libs" ] : [ openssl_lib_paths() . " $libs" ],
   'INC'             => $incdir ? "-I$incdir" : openssl_inc_paths(),
   'AUTHOR'          => 'Ian Robertson',
+  TEST_REQUIRES => {
+    'Test::Pod'           => '1.22',
+    'Test::More'          => 0,
+  },
    (eval { ExtUtils::MakeMaker->VERSION('6.52'); 1 } ?
     ('CONFIGURE_REQUIRES' =>
      {
