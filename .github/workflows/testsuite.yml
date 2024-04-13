@@ -132,6 +132,10 @@ jobs:
       - uses: actions/checkout@master
       - run: perl -V
       - run: perl Makefile.PL
+      - run: echo $PATH
+        shell: bash
       #- run: prove -vb t/*.t
-      - run: make test
+      # https://github.com/actions/runner-images/issues/5459
+      - run: PATH="/c/Strawberry/c/bin:/c/Strawberry/perl/site/bin:/c/Strawberry/perl/bin:/c/ProgramData/Chocolatey/bin:/c/Windows/system32:/c/Windows:/usr/bin:/c/mingw64/bin" make test
+        shell: bash
         #continue-on-error: true

@@ -23,7 +23,7 @@ WriteMakefile(
     'Test::Pod'           => '1.22',
     'Test::More'          => 0,
   },
-   (eval { ExtUtils::MakeMaker->VERSION('6.52'); 1 } ?
+  (eval { ExtUtils::MakeMaker->VERSION('6.52'); 1 } ?
     ('CONFIGURE_REQUIRES' =>
      {
       'Crypt::OpenSSL::Guess' => '0.11',
