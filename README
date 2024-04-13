@@ -17,7 +17,7 @@ DESCRIPTION
     "Crypt::OpenSSL::Random" provides the ability to seed and query the
     OpenSSL and LibreSSL library's pseudo-random number generators.
 
-    Note: On LibreSSL "random_egd()" is not defined.
+    Note: On LibreSSL random_egd() is not defined.
 
   EXPORT
     None by default.
@@ -50,7 +50,8 @@ Static Methods
         function does not exist.
 
     random_status ()
-        This function returns true if the PRNG has sufficient seeding.
+        This function returns 1 if the PRNG has sufficient seeding. or 0 if
+        not.
 
 BUGS
     Because of the internal workings of OpenSSL's random library, the

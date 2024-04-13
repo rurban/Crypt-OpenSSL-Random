@@ -94,7 +94,7 @@ PPCODE:
 
 #endif
 
- # Returns true if the PRNG has enough seed data
+ # Returns 1 if the PRNG has enough seed data
 
 void
 random_status()

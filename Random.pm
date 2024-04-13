@@ -78,7 +78,7 @@ function does not exist.
 
 =item random_status ()
 
-This function returns true if the PRNG has sufficient seeding.
+This function returns 1 if the PRNG has sufficient seeding. or 0 if not.
 
 =back
 
