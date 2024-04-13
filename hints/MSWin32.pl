@@ -1,5 +1,7 @@
 use Config;
 use Crypt::OpenSSL::Guess 0.11 qw(openssl_lib_paths);
+# openssl <1.1 API on windows: -lssl32 -leay32
+# >= 1.1 API cleanup:          -lssl -lcrypto
 if (my $libs = `pkg-config --libs libssl libcrypto 2>nul`) {
   # strawberry perl has pkg-config
   $self->{LIBS} = [openssl_lib_paths() . " $libs"];
