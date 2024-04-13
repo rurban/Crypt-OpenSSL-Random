@@ -73,8 +73,8 @@ gathering daemon.  Returns the number of bytes read from the daemon on
 success, or C<-1> if not enough bytes were read, or if the connection to
 the daemon failed.
 
-C<libressl> considers this function insecure, so with libressl this
-function does not exist.
+C<libressl> considers this function insecure, so with libressl or an openssl with
+no-egd this function does not exist.
 
 =item random_status ()
 

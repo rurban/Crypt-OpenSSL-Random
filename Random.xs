@@ -77,6 +77,9 @@ PPCODE:
  # Seed the PRNG with data from the indicated EntropyGatheringDaemon;
  # returns the number of bytes gathered, or -1 if there was a
  # connection failure or if the PRNG is still insufficiently seeded.
+ # libressl considers this function insecure, so with libressl or an openssl with
+ # no-egd this function does not exist.
+
 
 #ifndef OPENSSL_NO_EGD
 
