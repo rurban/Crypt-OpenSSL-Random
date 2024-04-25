@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - run: perl -V
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@v1.3
+        uses: perl-actions/install-with-cpm@v1
         with:
           install: |
             Crypt::OpenSSL::Guess
@@ -69,13 +69,13 @@ jobs:
           ]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: ${{ matrix.perl-version }}
       - run: perl -V
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@v1.3
+        uses: perl-actions/install-with-cpm@v1
         with:
           sudo: false
           install: |
@@ -101,10 +101,10 @@ jobs:
         perl-version: [latest]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - run: perl -V
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@v1.3
+        uses: perl-actions/install-with-cpm@v1
         with:
           sudo: false
           install: |
@@ -129,7 +129,7 @@ jobs:
         perl-version: [latest]
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
       - run: perl -V
       - run: perl Makefile.PL
       - run: echo $PATH
