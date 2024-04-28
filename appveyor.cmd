@@ -5,7 +5,10 @@ goto :eof
 :perl_setup
 if not defined perl_type set perl_type=system
 if "%perl_type%" == "cygwin" (
-  start /wait c:\cygwin\setup-x86.exe -q -g -P perl -P make -P gcc -P gcc-g++ -P libcrypt-devel
+  cinst -y wget
+  wget https://cygwin.com/setup-x86.exe -O C:\cygwin\setup-x86.exe
+  start /wait c:\cygwin\setup-x86.exe --no-check-certificate -qgnNdO -l C:\cygwin\var\cache\setup -R c:\cygwin -s http://mirror.steadfast.net/cygwin/ -P openssl-devel -P perl -P make -P gcc -P gcc-g++ -P libcrypt-devel
+  rem start /wait c:\cygwin\setup-x86.exe -q -g -P perl -P make -P gcc -P gcc-g++ -P libcrypt-devel
   set "PATH=C:\cygwin\usr\local\bin;C:\cygwin\bin;%PATH%"
 ) else if "%perl_type%" == "strawberry" (
   if not defined perl_version (
