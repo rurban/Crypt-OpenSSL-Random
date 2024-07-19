@@ -1,5 +1,6 @@
 use ExtUtils::MakeMaker;
 use Config;
+use List::Util 1.45           qw(uniq);
 use Crypt::OpenSSL::Guess 0.11 qw(openssl_inc_paths openssl_lib_paths);
 use 5.006;
 
@@ -17,11 +18,26 @@ if ( $Config{osname} eq 'aix' ) {
   $libs = $libs . ' -lz';
 }
 
+my $ssllibpth = openssl_lib_paths();
+my $lddlflags = $Config{lddlflags};
+$lddlflags    =~ s/(?=-L)/$ssllibpth /;
+
+my $ldflags = $Config{ldflags};
+$ldflags    =~ s/(?=-L)/$ssllibpth /;
+
+if ($^O eq "hpux" && $Config{ld} eq "/usr/bin/ld") {
+    my $bpth = join ":" => uniq (+("$ssllibpth $lddlflags $ldflags") =~ m/-L(\S+)/g);
+    $lddlflags .= " +b $bpth";
+    $ldflags   .= " +Wl,+b,$bpth";
+}
+
 WriteMakefile(
-  'NAME'	    => 'Crypt::OpenSSL::Random',
+  'NAME'            => 'Crypt::OpenSSL::Random',
   'VERSION_FROM'    => 'Random.pm',
-  'LIBS'            => $libdir ? [ "-L$libdir $libs" ] : [ openssl_lib_paths() . " $libs" ],
+  'LIBS'            => $libdir ? [ "-L$libdir $libs" ] : [ $ssllibpth . " $libs" ],
   'INC'             => $incdir ? "-I$incdir" : openssl_inc_paths(),
+  'LDFLAGS'         => $ldflags,
+  'LDDLFLAGS'       => $lddlflags,
   'AUTHOR'          => 'Ian Robertson',
   TEST_REQUIRES => {
     'Test::Pod'           => '1.22',
