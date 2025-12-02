@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - run: perl -V
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@v1
+        uses: perl-actions/install-with-cpm@8b1a9840b26cc3885ae2889749a48629be2501b0 # v1.9
         with:
           install: |
             Crypt::OpenSSL::Guess
@@ -41,7 +41,7 @@ jobs:
       perl-versions: ${{ steps.action.outputs.perl-versions }}
     steps:
       - id: action
-        uses: perl-actions/perl-versions@v1
+        uses: perl-actions/perl-versions@edf86e4f43a710eeafdedc8a6872b79d39f7fdde # v1.3
         with:
           since-perl: v5.8
           with-devel: true
@@ -68,10 +68,10 @@ jobs:
       image: perldocker/perl-tester:${{ matrix.perl-version }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - run: perl -V
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@v1
+        uses: perl-actions/install-with-cpm@8b1a9840b26cc3885ae2889749a48629be2501b0 # v1.9
         with:
           sudo: false
           install: |
@@ -97,10 +97,10 @@ jobs:
         perl-version: [latest]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - run: perl -V
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@v1
+        uses: perl-actions/install-with-cpm@8b1a9840b26cc3885ae2889749a48629be2501b0 # v1.9
         with:
           sudo: false
           install: |
@@ -125,7 +125,7 @@ jobs:
         perl-version: [latest]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - run: perl -V
       - run: perl Makefile.PL
       - run: echo $PATH
